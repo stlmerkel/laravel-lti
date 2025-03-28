@@ -17,7 +17,6 @@ This package preserves the original core functionality and adds Laravel-native i
 ## License
 
 This package is distributed under a dual license:
-
 - The Laravel integration code is licensed under the [MIT License](LICENSE).
 - The original LTI-PHP core (located in `src/Core/`) is licensed under the [LGPL-3.0 License](src/Core/LICENSE), per the original [celtic-project/LTI-PHP](https://github.com/celtic-project/LTI-PHP) repository.
 
