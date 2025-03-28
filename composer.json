@@ -1,14 +1,18 @@
 {
-  "name": "celtic/lti",
-  "description": "PHP class library for building LTI integrations",
-  "keywords": ["LTI"],
-  "homepage": "https://github.com/celtic-project/LTI-PHP",
+  "name": "stlmerkel/laravel-lti",
+  "description": "Laravel package wrapper for the LTI-PHP tool provider.",
+  "keywords": ["LTI", "Laravel", "ToolProvider", "Learning Tools Interoperability"],
+  "homepage": "https://github.com/stlmerkel/laravel-lti", 
   "type": "library",
-  "license": "LGPL-3.0-or-later",
+  "license": "MIT",
   "authors": [
     {
       "name": "Stephen P Vickers",
       "email": "stephen@spvsoftwareproducts.com"
+    },
+    {
+      "name": "Brian Merkel",
+      "email": "stlmerkel@protonmail.com"
     }
   ],
   "require": {
@@ -17,7 +21,19 @@
   },
   "autoload": {
     "psr-4": {
-      "ceLTIc\\LTI\\": "src/"
+      "Stlmerkel\\LaravelLTI\\": "src/"
+    },
+    "classmap": [
+      "src/Core"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Stlmerkel\\LaravelLTI\\LtiServiceProvider"
+      ]
     }
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

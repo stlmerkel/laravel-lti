@@ -1,19 +1,68 @@
-This set of PHP classes encapsulates the code required by an LTI compliant tool provider to communicate with an LTI tool consumer.  It includes support for LTI 1.1 and the unofficial extensions to Basic LTI, as well as the registration process and services of LTI 1.2/2.0, and the new security model introduced by LTI 1.3.  The Names and Role Provisioning service and the Assignment and Grade services (Line Item, Result and Score) are also supported using either of the LTI security models.
+# Laravel LTI Package
 
-These classes are designed as an update to the [LTI Tool Provider class library](http://www.spvsoftwareproducts.com/php/lti_tool_provider/) and a replacement for the library at https://github.com/IMSGlobal/LTI-Tool-Provider-Library-PHP which is no longer supported.
+A Laravel wrapper for the [LTI-PHP](https://github.com/celtic-project/LTI-PHP) library, enabling your Laravel application to act as an IMS Learning Tools Interoperability (LTI) tool provider.
 
-Whilst supporting LTI is relatively simple, the benefits to using a class library like this one are:
+This package preserves the original core functionality and adds Laravel-native integration via service providers, dependency injection, and route/middleware support.
 
-* the abstraction layer provided by the classes keeps the LTI communications separate from the application code;
-* the code can be re-used between multiple tool providers;
-* LTI data is transformed into useful objects and missing data automatically replaced with sensible defaults;
-* the outcomes service function uses LTI 1.1 or the unofficial outcomes extension according to whichever is supported by the tool consumer;
-* the unofficial extensions for memberships and setting services are supported;
-* additional functionality is included to:
-    * enable/disable a consumer key;
-    * set start and end times for enabling access for each consumer key;
-    * set up arrangements such that users from different resource links can all collaborate together within a single tool provider link;
-* LTI applications can take advantage of LTI updates with minimal impact on their code.
+---
 
-The GitHub repository provides access to the [source files](https://github.com/celtic-project/LTI-PHP) and [documentation](https://github.com/celtic-project/LTI-PHP/wiki).
-The example [Rating LTI application](https://github.com/celtic-project/Rating-PHP) is based on this library to further illustrate how it can be used.
+## 🚀 Features
+
+- Drop-in LTI Tool Provider based on `celtic-project/LTI-PHP`
+- Laravel service provider for seamless bootstrapping
+- Wrapper for dependency injection and request handling
+- Maintains compatibility with upstream LTI-PHP changes
+
+---
+## License
+
+This package is distributed under a dual license:
+
+- The Laravel integration code is licensed under the [MIT License](LICENSE).
+- The original LTI-PHP core (located in `src/Core/`) is licensed under the [LGPL-3.0 License](src/Core/LICENSE), per the original [celtic-project/LTI-PHP](https://github.com/celtic-project/LTI-PHP) repository.
+
+---
+## Database Setup
+
+This package includes sample SQL schemas from the original `LTI-PHP` package for:
+
+- MySQL
+- PostgreSQL
+- SQL Server
+- Oracle
+- SQLite
+
+See the [`sql/`](sql/) folder for details.
+
+---
+## Usage
+
+```php
+use Stlmerkel\LaravelLTI\LtiWrapper;
+
+public function launch(LtiWrapper $lti)
+{
+    $lti->handleRequest();
+}
+```
+
+## Install (Local Dev)
+
+1. Add to Laravel app:
+
+```json
+"repositories": [
+  {
+    "type": "path",
+    "url": "packages/stlmerkel/laravel-lti"
+  }
+]
+```
+
+2. Require:
+
+```bash
+composer require stlmerkel/laravel-lti
+```
+
+3. Publish config, routes, etc. as needed.
